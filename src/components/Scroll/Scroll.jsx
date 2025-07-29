@@ -9,9 +9,9 @@ export default function GlobalScrollIndicator() {
                 top: 0,
                 left: 0,
                 right: 0,
-                height: "10px",
+                height: "7px",
                 transformOrigin: "0%",
-                background: "red",
+                backgroundColor: "blue",
                 zIndex: 49
             }}
         />

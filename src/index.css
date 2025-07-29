@@ -14,3 +14,6 @@ body {
 .gradient-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-emerald-500;
 }
+.gradient-background {
+  @apply bg-gradient-to-r from-blue-500 to-emerald-500;
+}
