@@ -27,7 +27,7 @@ const projects = [
 export default function Projects() {
   return (
     <>
-      <section id="projects" className="py-20">
+      <section id="projects" className="py-20 mr-5 ml-5">
         <h2
           className="text-3xl font-bold mb-12 text-center gradient-text delay-[300ms] duration-[600ms] taos:translate-y-[100%] taos:opacity-0"
           data-taos-offset="300"

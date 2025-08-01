@@ -4,7 +4,6 @@ import Projects from './components/Projects/Projects';
 import Loader from './components/Loading/LoadAnimition';
 import CustomCursor from './components/CustomCursor/CustomCursor';
 import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
 import Skills from './components/Skills/Skills';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
@@ -14,6 +13,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import About from './components/About/About';
 import Layout from './components/Layout/Layout';
+import Home from './components/Home/Home';
 let query=new QueryClient({
   defaultOptions : {
     queries: {
@@ -25,7 +25,7 @@ export default function App() {
 
   let router = createBrowserRouter([
       {path:'',element:<Layout/>,children:[
-        {index:true,element:<Hero/>},
+        {index:true,element:<Home/>},
         {path:"/projects",element:<Projects/>},
         {path:"/skills",element:<Skills/>},
         {path:"/contact",element:<Contact/>},
