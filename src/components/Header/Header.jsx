@@ -16,7 +16,7 @@ export default function Header({ darkMode, setDarkMode }) {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  const navItems = ['Projects', 'Skills', 'Contact'];
+  const navItems = ['Projects', 'Skills', 'Contact','About', 'Certificate'];
   return (
     <>
       <motion.header

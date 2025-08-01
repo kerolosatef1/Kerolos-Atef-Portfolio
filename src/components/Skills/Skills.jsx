@@ -20,17 +20,17 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20">
+  <section id="skills" className="py-20">
       <h2 className="text-3xl font-bold mb-12 text-center gradient-text">My Skills</h2>
 
-      <div className="flex flex-wrap items-center mr-12 ml-12 justify-center gap-8 py-8 px-4 bg-gradient-to-br  rounded-xl shadow-2xl">
+    <div className="flex flex-wrap items-center mr-12 ml-12 mb-10 justify-center gap-8 py-8 px-4 bg-gradient-to-br  rounded-xl shadow-2xl">
   
   <div className="flex flex-col items-center group">
     <FaReact
       className="text-6xl text-cyan-400 mb-2 animate-[spin_8s_linear_infinite] hover:animate-[spin_2s_linear_infinite] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:scale-110 transform-gpu will-change-transform"
     />
     <p className="text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">React</p>
-  </div>
+    </div>
 
   {/* Tailwind CSS */}
   <div className="flex flex-col items-center group">
@@ -38,7 +38,7 @@ export default function Skills() {
       className="text-6xl text-cyan-300 mb-2 animate-[spin_7s_linear_infinite] hover:animate-[spin_1.5s_linear_infinite] transition-all duration-300 ease-in-out hover:scale-110 transform-gpu"
     />
     <p className="text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">Tailwind</p>
-  </div>
+    </div>
 
   {/* JavaScript */}
   <div className="flex flex-col items-center group">

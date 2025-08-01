@@ -14,6 +14,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import About from './components/About/About';
 import Layout from './components/Layout/Layout';
 import Home from './components/Home/Home';
+import Certificates from './components/Certificate/Certificate';
 let query=new QueryClient({
   defaultOptions : {
     queries: {
@@ -30,6 +31,8 @@ export default function App() {
         {path:"/skills",element:<Skills/>},
         {path:"/contact",element:<Contact/>},
         {path:"/about",element:<About/>},
+        {path:"/certificate",element:<Certificates/>},
+
 
    ]}
   ])
