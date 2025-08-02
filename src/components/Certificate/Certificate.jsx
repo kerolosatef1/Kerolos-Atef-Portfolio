@@ -7,7 +7,7 @@ import InnovEgypt from '../../assets/INNOVEGYPT_page-0001.jpg';
 import Iitidata from '../../assets/_page-0001.jpg';
 import Ibm from '../../assets/IBM_page-0001.jpg';
 import Udemi from '../../assets/Udemy_page-0001.jpg'
-import route2 from '../../assets/Route.pdf';
+import route2 from '../../assets/route.pdf';
 
 const certificates = [
   {
@@ -15,7 +15,7 @@ const certificates = [
     title: "Front-end Diploma in Route Academy With React FrameWork",
     image: Route,
     alt: "Front-end Diploma in Route Academy With React FrameWork",
-    downloadUrl: route2,
+    downloadUrl: "../../assets/Route.pdf",
     date: "OCT 2024"
   },
   {
@@ -87,7 +87,7 @@ export default function Certificates() {
   };
 
   return (
-    <section className="py-12 relative">
+    <section className="py-20 relative">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">
           The Certificates

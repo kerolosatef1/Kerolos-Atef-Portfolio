@@ -13,7 +13,7 @@ export default function Layout() {
         <Header />
   
         <GlobalScrollIndicator />
-<ParticlesBackground />
+     
         <Loader />
       
     
@@ -21,7 +21,7 @@ export default function Layout() {
 
         </Outlet>
         <Footer/>
-     
+        <ParticlesBackground />
         
     </>
 }

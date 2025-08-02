@@ -7,7 +7,7 @@ import { SiTypescript } from "react-icons/si";
 import { TbBrandRedux } from "react-icons/tb";
 import { TbBrandFramerMotion } from "react-icons/tb";
 const skills = [
-    { name: "HTML", level: 95 },
+  { name: "HTML", level: 95 },
   { name: "CSS", level: 90 },
   { name: "JavaScript", level: 90 },
   { name: "React", level: 85 },
