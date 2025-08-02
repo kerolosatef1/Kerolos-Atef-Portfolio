@@ -6,8 +6,8 @@ import Cisco from '../../assets/cisco.jpg';
 import InnovEgypt from '../../assets/INNOVEGYPT_page-0001.jpg';
 import Iitidata from '../../assets/_page-0001.jpg';
 import Ibm from '../../assets/IBM_page-0001.jpg';
-import Udemi from '../../assets/Udemy_page-0001.jpg'
-import route2 from '../../assets/route.pdf';
+import Udemi from '../../assets/Udemy_page-0001.jpg';
+import CiscoPdf from '../../assets/CISCO.pdf';
 
 const certificates = [
   {
@@ -15,75 +15,87 @@ const certificates = [
     title: "Front-end Diploma in Route Academy With React FrameWork",
     image: Route,
     alt: "Front-end Diploma in Route Academy With React FrameWork",
-    downloadUrl: "../../assets/Route.pdf",
     date: "OCT 2024"
   },
   {
     id: 2,
     title: "Back-end Diploma in ITI with .NET",
     image: Iti,
-    downloadUrl: "/certificates/js-certificate.pdf",
     date: "JUL 2024"
   },
   {
     id: 3,
-    title: "JavaScript Essintial1 in Cisco  Academy",
-    image:Cisco ,
-    downloadUrl: "/certificates/web-dev-certificate.pdf",
+    title: "JavaScript Essintial1 in Cisco Academy",
+    image: Cisco,
     date: "Sep 2023"
   },
   {
     id: 4,
     title: "Digital Marketing in InnovEgypt",
     image: InnovEgypt,
-    downloadUrl: "/certificates/design-certificate.pdf",
-    date: "AUG 2022 "
+    date: "AUG 2022"
   },
-   {
+  {
     id: 5,
     title: "Web Development in EFE With IBM",
     image: Iitidata,
-    downloadUrl: "/certificates/design-certificate.pdf",
-    date: " 2022"
+    date: "2022"
   },
   {
     id: 6,
-    title: "Web Devolopment in EFE With IBM",
+    title: "Web Development in EFE With IBM",
     image: Ibm,
-    downloadUrl: "/certificates/design-certificate.pdf",
-    date: "أغسطس 2023"
+    date: "AUG 2023"
   },
-   {
+  {
     id: 7,
-    title: "JavaScript in Udemi",
+    title: "JavaScript in Udemy",
     image: Udemi,
-    downloadUrl: "/certificates/design-certificate.pdf",
-    date: "أغسطس 2023"
+    date: "AUG 2023"
   }
 ];
 
 export default function Certificates() {
   const [zoomedImage, setZoomedImage] = useState(null);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [downloadStatus, setDownloadStatus] = useState({});
 
-  const handleDownload = (url, title) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `${title}.pdf`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownload = (url, title, id) => {
+    setDownloadStatus(prev => ({ ...prev, [id]: 'downloading' }));
+    
+    try {
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${title.replace(/[/\\?%*:|"<>]/g, '-')}.pdf`; // إزالة أحرف غير مسموحة في أسماء الملفات
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      setDownloadStatus(prev => ({ ...prev, [id]: 'success' }));
+      
+      // إعادة تعيين حالة التنزيل بعد 3 ثواني
+      setTimeout(() => {
+        setDownloadStatus(prev => ({ ...prev, [id]: '' }));
+      }, 3000);
+    } catch (error) {
+      console.error('Download failed:', error);
+      setDownloadStatus(prev => ({ ...prev, [id]: 'failed' }));
+      
+      setTimeout(() => {
+        setDownloadStatus(prev => ({ ...prev, [id]: '' }));
+      }, 3000);
+    }
   };
 
   const handleImageClick = (cert) => {
     setZoomedImage(cert.image);
     setIsZoomed(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when zoomed
+    document.body.style.overflow = 'hidden';
   };
 
   const closeZoom = () => {
     setIsZoomed(false);
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    document.body.style.overflow = 'auto';
   };
 
   return (
@@ -97,7 +109,7 @@ export default function Certificates() {
           {certificates.map((cert) => (
             <div 
               key={cert.id}
-              className="dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+              className="dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
               onClick={() => handleImageClick(cert)}
             >
               <div className="relative h-80 overflow-hidden">
@@ -107,24 +119,15 @@ export default function Certificates() {
                   className="w-full h-full object-contain p-4 hover:opacity-90 transition-opacity"
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
                   <h3 className="text-white font-bold text-lg mb-1">{cert.title}</h3>
                   <p className="text-gray-200 text-sm">{cert.date}</p>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDownload(cert.downloadUrl, cert.title);
-                    }}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors duration-300 mt-2 w-fit"
-                    aria-label={`Download ${cert.title}`}
-                  >
-                    <FaDownload />
-                    <span>Download</span>
-                  </button>
+              
                 </div>
               </div>
             </div>
           ))}
+          
         </div>
       </div>
 
@@ -135,7 +138,7 @@ export default function Certificates() {
           onClick={closeZoom}
         >
           <button 
-            className="absolute top-4 right-4 text-white text-2xl z-50"
+            className="absolute top-4 right-4 text-white text-2xl z-50 hover:text-gray-300 transition-colors"
             onClick={closeZoom}
           >
             <FaTimes />
