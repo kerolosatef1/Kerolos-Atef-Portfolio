@@ -17,6 +17,7 @@ import Home from './components/Home/Home';
 import Certificates from './components/Certificate/Certificate';
 import Notfound from './components/Notfound/Notfound';
 import ParticlesBackground from './components/ParticlesBackground/ParticlesBackground';
+import Resume from './components/Resume/Resume';
 let query=new QueryClient({
   defaultOptions : {
     queries: {
@@ -34,6 +35,7 @@ export default function App() {
         {path:"/contact",element:<Contact/>},
         {path:"/about",element:<About/>},
         {path:"/certificate",element:<Certificates/>},
+        {path:"/resume",element:<Resume/>},
         {path:"*",element:<Notfound/>},
    ]}
   ])

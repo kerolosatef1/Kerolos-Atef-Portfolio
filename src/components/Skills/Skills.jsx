@@ -77,7 +77,7 @@ export default function Skills() {
   </div>
 </div>
       
-      <div className="max-w-2xl text-white mx-auto space-y-6">
+      <div className="max-w-2xl  text-white mx-auto space-y-6">
         {skills.map((skill, index) => (
           <div key={index}>
             <div className="flex justify-between mb-1">

@@ -16,7 +16,7 @@ export default function Header({ darkMode, setDarkMode }) {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  const navItems = ['Projects', 'Skills', 'Contact','About', 'Certificate'];
+  const navItems = ['About','Projects', 'Skills',  'Certificate','Contact'];
   return (
     <>
       <motion.header
@@ -64,12 +64,13 @@ export default function Header({ darkMode, setDarkMode }) {
               ))}
             </nav>
             <div className="flex items-center space-x-4">
-              <motion.button 
+              <Link
+                to="/resume"
                 className="hidden md:block px-4 py-2 bg-blue-500 text-white rounded-md"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}>
                 Resume
-              </motion.button>
+              </Link>
 
               {/* زر القائمة المتنقلة - يظهر فقط على الشاشات الصغيرة */}
               <motion.button
