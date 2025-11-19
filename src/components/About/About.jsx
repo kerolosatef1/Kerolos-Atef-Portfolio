@@ -24,13 +24,12 @@ export default function About(){
               </div>
             </div>
             
-            {/* المحتوى */}
+            
             <div className="w-full md:w-2/3">
               <h3 className="text-2xl font-bold mb-4 text-white dark:text-white">Hi  My Name Kerolos Atef </h3>
               <p className="text-white  mb-6">
             A front-end developer and React.js expert with experience building interactive web applications. I love turning ideas into reality through clean, efficient code.              </p>
               
-              {/* معلومات التعليم */}
               <div className="mb-6">
                 <div className="flex items-center gap-3 mb-4">
                   <FaUniversity className="text-blue-500 text-xl" />

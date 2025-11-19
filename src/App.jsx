@@ -10,7 +10,6 @@ import Footer from './components/Footer/Footer';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
 import About from './components/About/About';
 import Layout from './components/Layout/Layout';
 import Home from './components/Home/Home';
@@ -26,7 +25,6 @@ let query=new QueryClient({
   },
 }); 
 export default function App() {
-
   let router = createBrowserRouter([
       {path:'',element:<Layout/>,children:[
         {index:true,element:<Home/>},

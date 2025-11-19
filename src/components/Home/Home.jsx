@@ -64,7 +64,7 @@ export default function Home({ setCursorVariant = () => {} }) {
           variants={item}
           className="text-lg mb-8 text-white text-center"
         >
-         I Build Web Applications With React And JavaScript,
+         I Build Web Pages With React and JavaScript and TypeScript For more Security 
         </motion.p>
        
        

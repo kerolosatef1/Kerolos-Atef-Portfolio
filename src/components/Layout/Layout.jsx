@@ -11,11 +11,9 @@ export default function Layout() {
 
     return <>
         <Header />
-  
+
         <GlobalScrollIndicator />
-     
         <Loader />
-      
     
         <Outlet>
 

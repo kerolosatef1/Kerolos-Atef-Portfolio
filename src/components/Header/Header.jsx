@@ -72,7 +72,7 @@ export default function Header({ darkMode, setDarkMode }) {
                 Resume
               </Link>
 
-              {/* زر القائمة المتنقلة - يظهر فقط على الشاشات الصغيرة */}
+
               <motion.button
                 className="md:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
                 onClick={toggleMobileMenu}
