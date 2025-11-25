@@ -7,7 +7,6 @@ import {
   Typography,
   Button,
   IconButton,
-  Card,
 } from "@material-tailwind/react";
 
 export function StickyNavbar() {
@@ -25,10 +24,14 @@ export function StickyNavbar() {
   });
 
   useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false),
-    );
+    const handleResize = () => {
+      if (window.innerWidth >= 960) {
+        setOpenNav(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const navList = (
@@ -41,8 +44,8 @@ export function StickyNavbar() {
           className="p-1 font-normal"
           key={item}
         >
-          <Link 
-            to={`/${item.toLowerCase()}`} 
+          <Link
+            to={`/${item.toLowerCase()}`}
             className="flex items-center relative group"
           >
             {item}
@@ -99,10 +102,10 @@ export function StickyNavbar() {
                 Faragello
               </Typography>
             </motion.div>
-            
+
             <div className="flex items-center gap-4">
               <div className="mr-4 hidden lg:block">{navList}</div>
-              
+
               <div className="flex items-center gap-x-1">
                 <Button
                   variant="text"
@@ -112,7 +115,7 @@ export function StickyNavbar() {
                 >
                   <span>Resume</span>
                 </Button>
-                
+
                 <IconButton
                   variant="text"
                   className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -153,7 +156,7 @@ export function StickyNavbar() {
               </div>
             </div>
           </div>
-          
+
           <MobileNav open={openNav}>
             {navList}
             <div className="flex items-center gap-x-1">
@@ -164,9 +167,6 @@ export function StickyNavbar() {
           </MobileNav>
         </Navbar>
       </motion.div>
-
-      {/* بقية المحتوى */}
-   
     </>
   );
 }

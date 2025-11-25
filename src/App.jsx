@@ -1,50 +1,50 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import Projects from './components/Projects/Projects';
-import Loader from './components/Loading/LoadAnimition';
-import CustomCursor from './components/CustomCursor/CustomCursor';
-import Header from './components/Header/Header';
-import Skills from './components/Skills/Skills';
-import Contact from './components/Contact/Contact';
-import Footer from './components/Footer/Footer';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import About from './components/About/About';
 import Layout from './components/Layout/Layout';
 import Home from './components/Home/Home';
+import Projects from './components/Projects/Projects';
+import Skills from './components/Skills/Skills';
+import Contact from './components/Contact/Contact';
+import About from './components/About/About';
 import Certificates from './components/Certificate/Certificate';
-import Notfound from './components/Notfound/Notfound';
-import ParticlesBackground from './components/ParticlesBackground/ParticlesBackground';
 import Resume from './components/Resume/Resume';
-let query=new QueryClient({
-  defaultOptions : {
+import Notfound from './components/Notfound/Notfound';
+
+// Configure React Query with better defaults
+const queryClient = new QueryClient({
+  defaultOptions: {
     queries: {
-      
+      refetchOnWindowFocus: false,
+      retry: 1,
+      staleTime: 5 * 60 * 1000, // 5 minutes
     },
   },
-}); 
+});
+
+// Router configuration
+const router = createBrowserRouter([
+  {
+    path: '',
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: '/projects', element: <Projects /> },
+      { path: '/skills', element: <Skills /> },
+      { path: '/contact', element: <Contact /> },
+      { path: '/about', element: <About /> },
+      { path: '/certificate', element: <Certificates /> },
+      { path: '/resume', element: <Resume /> },
+      { path: '*', element: <Notfound /> },
+    ],
+  },
+]);
+
 export default function App() {
-  let router = createBrowserRouter([
-      {path:'',element:<Layout/>,children:[
-        {index:true,element:<Home/>},
-        {path:"/projects",element:<Projects/>},
-        {path:"/skills",element:<Skills/>},
-        {path:"/contact",element:<Contact/>},
-        {path:"/about",element:<About/>},
-        {path:"/certificate",element:<Certificates/>},
-        {path:"/resume",element:<Resume/>},
-        {path:"*",element:<Notfound/>},
-   ]}
-  ])
-  return <>
-
-    <QueryClientProvider client={query}>
-    <ParticlesBackground/>
+  return (
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-<ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-
-    
-  </>
+  );
 }
