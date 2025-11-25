@@ -5,27 +5,28 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 px-5">
       <h2
-        className="text-3xl font-bold mb-12 text-center gradient-text delay-[300ms] duration-[600ms] taos:translate-y-[100%] taos:opacity-0"
+        className="text-3xl font-bold mb-12 text-center gradient-text"
         data-taos-offset="300"
       >
         Featured Projects
       </h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {PROJECTS.map((project, index) => (
+        {PROJECTS.map((project) => (
           <div
             key={project.id}
             className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-2"
-            data-taos-offset="300"
           >
             <div className="relative h-48 overflow-hidden group">
               <img
                 src={project.image}
                 alt={project.alt}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                style={{ willChange: 'transform' }}
                 onError={(e) => {
-                  e.target.src = '/projects/project-placeholder.jpg';
-                  e.target.className = 'w-full h-full object-contain p-4 bg-gray-100';
+                  e.target.style.display = 'none';
                 }}
               />
             </div>

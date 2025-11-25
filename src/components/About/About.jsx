@@ -19,6 +19,8 @@ export default function About() {
                   <img
                     src={ProfileImage}
                     alt="Kerolos Atef Profile"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </div>

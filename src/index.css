@@ -7,13 +7,33 @@
   --secondary: #10b981;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50 transition-colors duration-300;
+  overscroll-behavior: none;
+  /* Prevents overscroll bounce on mobile */
+}
+
+/* Performance optimizations */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .gradient-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-emerald-500;
 }
+
 .gradient-background {
   @apply bg-gradient-to-r from-blue-500 to-emerald-500;
+}
+
+/* Image loading optimization */
+img {
+  content-visibility: auto;
+  will-change: transform;
 }

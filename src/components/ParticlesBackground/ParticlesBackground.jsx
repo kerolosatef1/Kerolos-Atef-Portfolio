@@ -302,7 +302,10 @@ const ParticlesBackground = () => {
         width: "100%",
         height: "100%",
         zIndex: -1,
+        pointerEvents: "none", // ✅ CRITICAL: Allows scroll and clicks to pass through
         background: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
+        willChange: "transform", // GPU acceleration hint
+        touchAction: "none", // Prevents touch interference
       }}
     />
   );
