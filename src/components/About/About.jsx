@@ -1,87 +1,65 @@
 import React from "react";
-import { FaGraduationCap, FaUniversity, FaAward } from 'react-icons/fa';
-import ProfileImage from '../../assets/profileImage.jpg';
+import Tilt from "react-parallax-tilt";
+import { motion } from "framer-motion";
 
-export default function About() {
+import { styles } from "../../../style";
+import { services } from "../../constants";
+import  SectionWrapper  from "../hook/SectionWrapper";
+import { fadeIn, textVariant } from "../../utils/motion";
+
+const ServiceCard = ({ index, title, icon }) => (
+  <Tilt
+    tiltMaxAngleX={45}
+    tiltMaxAngleY={45}
+    scale={1}
+    transitionSpeed={450}
+    className="xs:w-[250px] w-full"
+  >
+    <motion.div
+      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+      className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
+    >
+      <div className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
+        <img
+          src={icon}
+          alt={title}
+          className="w-16 h-16 object-contain"
+        />
+
+        <h3 className="text-white text-[20px] font-bold text-center">
+          {title}
+        </h3>
+      </div>
+    </motion.div>
+  </Tilt>
+);
+
+const About = () => {
   return (
     <>
-      <section id="about" className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">
-            About
-          </h2>
+      <motion.div variants={textVariant()}>
+        <p className={styles.sectionSubText}>Introduction</p>
+        <h2 className={styles.sectionHeadText}>Overview.</h2>
+      </motion.div>
 
-          <div className="max-w-4xl mx-auto text-white rounded-xl shadow-lg p-8">
-            <div className="flex flex-col md:flex-row gap-8">
-              {/* Profile Image */}
-              <div className="w-full md:w-1/3 flex justify-center">
-                <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-blue-500">
-                  <img
-                    src={ProfileImage}
-                    alt="Kerolos Atef Profile"
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+      <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+      >
+        I'm a skilled software developer with experience in TypeScript and
+        JavaScript, and expertise in frameworks like React, Node.js, and
+        Three.js. I'm a quick learner and collaborate closely with clients to
+        create efficient, scalable, and user-friendly solutions that solve
+        real-world problems. Let's work together to bring your ideas to life!
+      </motion.p>
 
-              {/* About Content */}
-              <div className="w-full md:w-2/3">
-                <h3 className="text-2xl font-bold mb-4 text-white">Hi, My Name is Kerolos Atef</h3>
-                <p className="text-white mb-6">
-                  A front-end developer and React.js expert with experience building interactive web applications.
-                  I love turning ideas into reality through clean, efficient code.
-                </p>
-
-                {/* Education */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <FaUniversity className="text-blue-500 text-xl" />
-                    <h4 className="text-xl font-semibold text-white">Education Background</h4>
-                  </div>
-
-                  <div className="pl-9">
-                    <div className="mb-4">
-                      <h5 className="font-medium text-white">NAHDA UNIVERSITY</h5>
-                      <p className="text-white">COMPUTER SCIENCE</p>
-                      <div className="flex items-center gap-2 mt-1">
-                        <FaAward className="text-yellow-500" />
-                        <span className="text-white">Very Good [2.97]</span>
-                      </div>
-                      <p className="text-gray-400 text-sm mt-1">2025</p>
-                    </div>
-
-                    <div>
-                      <h5 className="font-medium text-white">Front-End Developer</h5>
-                      <p className="text-white">Route Academy</p>
-                      <p className="text-gray-400 text-sm mt-1">2024</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Skills */}
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <FaGraduationCap className="text-blue-500 text-xl" />
-                    <h4 className="text-xl font-semibold text-white">Skills</h4>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 pl-9">
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">React.js</span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JavaScript</span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">HTML/CSS</span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Tailwind CSS</span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Bootstrap</span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Framer Motion</span>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Highcharts</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="mt-20 flex flex-wrap gap-10">
+        {services.map((service, index) => (
+          <ServiceCard key={service.title} index={index} {...service} />
+        ))}
+      </div>
     </>
   );
-}
+};
+
+export default SectionWrapper(About, "about");

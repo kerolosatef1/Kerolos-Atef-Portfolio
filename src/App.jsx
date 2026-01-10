@@ -1,50 +1,34 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Layout from './components/Layout/Layout';
-import Home from './components/Home/Home';
-import Projects from './components/Projects/Projects';
-import Skills from './components/Skills/Skills';
-import Contact from './components/Contact/Contact';
-import About from './components/About/About';
-import Certificates from './components/Certificate/Certificate';
-import Resume from './components/Resume/Resume';
-import Notfound from './components/Notfound/Notfound';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-// Configure React Query with better defaults
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: 1,
-      staleTime: 5 * 60 * 1000, // 5 minutes
-    },
-  },
-});
+import Layout from "./components/Layout/Layout";
+import Hero from "./components/Hero/Hero";
+import About from "./components/About/About";
+import Experience from "./components/Experience/Experience";
+import Tech from "./components/Tech/Tech";
+import Works from "./components/Works/Work";
+import Feedbacks from "./components/Feedback/FeedBack";
+import Contact from "./components/Contact/Contact";
+import Notfound from "./components/Notfound/Notfound";
 
-// Router configuration
 const router = createBrowserRouter([
   {
-    path: '',
+    path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Home /> },
-      { path: '/projects', element: <Projects /> },
-      { path: '/skills', element: <Skills /> },
-      { path: '/contact', element: <Contact /> },
-      { path: '/about', element: <About /> },
-      { path: '/certificate', element: <Certificates /> },
-      { path: '/resume', element: <Resume /> },
-      { path: '*', element: <Notfound /> },
+      { index: true, element: <Hero /> },
+      { path: "about", element: <About /> },
+      { path: "experience", element: <Experience /> },
+      { path: "tech", element: <Tech /> },
+      { path: "works", element: <Works /> },
+      { path: "feedbacks", element: <Feedbacks /> },
+      { path: "contact", element: <Contact /> },
+      { path: "*", element: <Notfound /> },
     ],
   },
 ]);
 
-export default function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-  );
-}
+const App = () => {
+  return <RouterProvider router={router} />;
+};
+
+export default App;
